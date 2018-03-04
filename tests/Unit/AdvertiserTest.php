@@ -57,7 +57,7 @@ class AdvertiserTest extends TestCase
             'name' => $this->name,
         ]))->handle();
 
-        $this->assertEquals($this->name, $this->advertiser->name);
+        $this->assertEquals($this->name, $advertiser->name);
     }
 
     /** @test */
