@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Advertiser extends Model
 {
@@ -14,4 +15,12 @@ class Advertiser extends Model
     protected $fillable = [
         'name', 'phone', 'address',
     ];
+
+    /**
+     * The adds from advertiser.
+     */
+    public function adss(): HasMany
+    {
+        return $this->hasMany(Advertisement::class);
+    }
 }
