@@ -4,7 +4,7 @@ namespace App\Jobs;
 
 use App\Advertiser;
 
-class deleteAdvertiser
+class DeleteAdvertiser
 {
     /**
      * The advertiser.
