@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('advertiser')->group(function () {
+    Route::get('/', 'AdvertiserController@index')->name('advertiser.index');
+    Route::post('/', 'AdvertiserController@store')->name('advertiser.store');
+    Route::put('/{advertiser}', 'AdvertiserController@update')->name('advertiser.update');
+    Route::delete('/{advertiser}', 'AdvertiserController@delete')->name('advertiser.destroy');
 });
