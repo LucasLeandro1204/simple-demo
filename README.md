@@ -23,3 +23,11 @@ Run the migrations and seeds
 ```
 $ php artisan migrate --seed
 ```
+
+### Tests
+
+To run them
+
+```
+$ composer test
+```
