@@ -53,6 +53,8 @@ class AdvertiserTest extends TestCase
     {
         $advertiser = factory(Advertiser::class)->create();
 
+        $this->assertNotEquals($this->name, $advertiser->name); 
+
         (new Update($advertiser, [
             'name' => $this->name,
         ]))->handle();
