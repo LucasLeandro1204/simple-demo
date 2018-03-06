@@ -47,7 +47,7 @@ class CreateAdvertisement
      *
      * @return void
      */
-    public function __construct(Advertiser $advertiser, string $title, string $body, int $price, bool $status)
+    public function __construct(Advertiser $advertiser, string $title, string $body, int $price, bool $status = true)
     {
         $this->advertiser = $advertiser;
         $this->title = $title;
