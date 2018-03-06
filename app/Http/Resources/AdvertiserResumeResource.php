@@ -17,7 +17,7 @@ class AdvertiserResumeResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'value' => (int) $this->adss()->sum('price'),
+            'value' => (int) $this->adss->sum('price'),
         ];
     }
 }

@@ -8,7 +8,7 @@ Clone and install composer and nmp dependencies
 
 ```
 $ git clone https://github.com/LucasLeandro1204/simple-demo.git
-$ cd simple-vue
+$ cd simple-demo
 $ composer update && npm install
 ```
 
