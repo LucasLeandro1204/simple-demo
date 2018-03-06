@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Advertiser;
+use Tests\TestCase;
 use App\Advertisement;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -47,19 +47,19 @@ class AdvertiserControllerTest extends TestCase
     /** @test */
     public function cant_create_without_required_parameters(): void
     {
-        $response = $this->post(route('advertiser.store', []));
+        $response = $this->post(route('advertiser.store'), []);
         $response->assertStatus(302);
 
-        $response = $this->post(route('advertiser.store', [
+        $response = $this->post(route('advertiser.store'), [
             'name' => 'Foo',
-        ]));
+        ]);
         $response->assertStatus(302);
 
-        $response = $this->post(route('advertiser.store', [
+        $response = $this->post(route('advertiser.store'), [
             'name' => 'Foo',
             'phone' => null,
             'address' => 'Foo at foo',
-        ]));
+        ]);
         $response->assertStatus(302);
     }
 
