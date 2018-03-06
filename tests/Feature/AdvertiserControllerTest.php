@@ -47,20 +47,23 @@ class AdvertiserControllerTest extends TestCase
     /** @test */
     public function cant_create_without_required_parameters(): void
     {
-        $response = $this->post(route('advertiser.store'), []);
-        $response->assertStatus(302);
+        $response = $this->json('POST', route('advertiser.store'), []);
+        $response->assertStatus(422);
+        $response->assertJsonValidationErrors([
+            'name', 'phone', 'address',
+        ]);
 
-        $response = $this->post(route('advertiser.store'), [
+        $response = $this->json('POST', route('advertiser.store'), [
             'name' => 'Foo',
         ]);
-        $response->assertStatus(302);
+        $response->assertStatus(422);
 
-        $response = $this->post(route('advertiser.store'), [
+        $response = $this->json('POST', route('advertiser.store'), [
             'name' => 'Foo',
             'phone' => null,
             'address' => 'Foo at foo',
         ]);
-        $response->assertStatus(302);
+        $response->assertStatus(422);
     }
 
     /** @test */

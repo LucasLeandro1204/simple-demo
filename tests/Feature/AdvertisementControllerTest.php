@@ -14,8 +14,18 @@ class AdvertisementControllerTest extends TestCase
     /** @test */
     public function cant_create_an_advertisement_without_advertiser(): void
     {
-        $response = $this->post(route('advertisement.store'));
-        $response->assertStatus(302);
+        $response = $this->json('POST', route('advertisement.store'));
+        $response->assertStatus(422);
+        $response->assertJsonValidationErrors([
+            'title', 'body', 'price',
+        ]);
+
+        $response = $this->json('POST', route('advertisement.store'), [
+            'title' => 'Foo',
+            'body' => 'kkkkk',
+            'price' => 131390,
+        ]);
+        $response->assertStatus(404);
     }
 
     /** @test */
@@ -23,7 +33,7 @@ class AdvertisementControllerTest extends TestCase
     {
         $advertiser = factory(Advertiser::class)->create();
         
-        $response = $this->json('POST', route('advertisement.store'), [
+        $response = $this->post(route('advertisement.store'), [
             'advertiser' => $advertiser->id,
             'title' => 'Foo',
             'body' => 'Bar',
