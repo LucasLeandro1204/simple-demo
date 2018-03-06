@@ -12,39 +12,18 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class AdvertiserTest extends TestCase
 {
     use RefreshDatabase;
-
-    /**
-     * Advertiser name.
-     *
-     * @var string
-     */
-    protected $name = 'Cláudio';
-
-    /**
-     * Advertiser phone.
-     *
-     * @var string
-     */
-    protected $phone = '48 9 9999 9999';
-
-    /**
-     * Advertiser address.
-     *
-     * @var string
-     */
-    protected $address = 'Rua Manoel Carlos';
     
     /** @test */
     public function we_can_create_an_advertiser(): void
     {
         $this->assertNull(Advertiser::first());
 
-        $advertiser = (new Create($this->name, $this->phone, $this->address))->handle();
+        $advertiser = (new Create('Foo bar', '48 9 9999 9999', 'Foo bar baz'))->handle();
 
         $this->assertInstanceOf(Advertiser::class, $advertiser);
-        $this->assertEquals($this->name, $advertiser->name);
-        $this->assertEquals($this->phone, $advertiser->phone);
-        $this->assertEquals($this->address, $advertiser->address);
+        $this->assertEquals('Foo bar', $advertiser->name);
+        $this->assertEquals('48 9 9999 9999', $advertiser->phone);
+        $this->assertEquals('Foo bar baz', $advertiser->address);
         $this->assertNotNull(Advertiser::first());
     }
 
@@ -53,13 +32,13 @@ class AdvertiserTest extends TestCase
     {
         $advertiser = factory(Advertiser::class)->create();
 
-        $this->assertNotEquals($this->name, $advertiser->name); 
+        $this->assertNotEquals('Foo bar', $advertiser->name); 
 
         (new Update($advertiser, [
-            'name' => $this->name,
+            'name' => 'Foo bar',
         ]))->handle();
 
-        $this->assertEquals($this->name, $advertiser->name);
+        $this->assertEquals('Foo bar', $advertiser->name);
     }
 
     /** @test */

@@ -12,28 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class AdvertisementTest extends TestCase
 {
     use RefreshDatabase;
-
-    /**
-     * Advertisement title.
-     *
-     * @var string
-     */
-    protected $title = 'Some random title';
-
-    /**
-     * Advertisement body.
-     *
-     * @var string
-     */
-    protected $body = 'Some random content.';
-
-    /**
-     * Advertisement price (in cents).
-     *
-     * @var int
-     */
-    protected $price = 1900;
-
+    
     /** @test */
     public function we_can_create_an_advertisement(): void
     {
@@ -41,7 +20,7 @@ class AdvertisementTest extends TestCase
 
         $this->assertEquals(0, $advertiser->adss()->count());
 
-        $ad = (new Create($advertiser, $this->title, $this->body, $this->price, true))->handle();
+        $ad = (new Create($advertiser, 'Foo', 'Foo bar baz', 1930, true))->handle();
 
         $this->assertEquals(1, $advertiser->adss()->count());
         $this->assertTrue($ad->status);
