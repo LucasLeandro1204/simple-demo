@@ -19,3 +19,8 @@ Route::prefix('advertiser')->group(function () {
     Route::put('/{advertiser}', 'AdvertiserController@update')->name('advertiser.update');
     Route::delete('/{advertiser}', 'AdvertiserController@delete')->name('advertiser.destroy');
 });
+
+Route::prefix('advertisement')->group(function () {
+    Route::post('/', 'AdvertisementController@store')->name('advertisement.store');
+    Route::put('/{advertisement}', 'AdvertisementController@update')->name('advertisement.update');
+});
