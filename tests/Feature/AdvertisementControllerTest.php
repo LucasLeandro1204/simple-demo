@@ -48,6 +48,7 @@ class AdvertisementControllerTest extends TestCase
         $this->assertTrue($advertiser->adss()->exists());
     }
 
+    /** @test */
     public function can_toggle_advertisement_status(): void
     {
         $ad = factory(Advertisement::class)->create();
