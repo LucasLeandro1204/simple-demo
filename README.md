@@ -1,6 +1,6 @@
 # Simple demo
 
-Laravel, Vue, Tailwindcss.
+Laravel & TDD
 
 ### Install
 
