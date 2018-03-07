@@ -18,7 +18,9 @@ class AdvertiserController extends Controller
      */
     public function index(): ResourceCollection
     {
-        return Resume::collection(Advertiser::with('adss')->get());
+        return Resume::collection(Advertiser::with(['adss' => function ($query) {
+            $query->where('status', true);
+        }])->get());
     }
 
     /**
