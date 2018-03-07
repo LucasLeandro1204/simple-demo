@@ -36,9 +36,7 @@ class UpdateAdvertisementStatus
      */
     public function handle(): Advertisement
     {
-        $this->advertisement->update([
-            'status' => $this->status,
-        ]);
+        $this->advertisement->status = $this->status;
         
         return tap($this->advertisement)->save();
     }

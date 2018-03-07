@@ -30,12 +30,12 @@ class AdvertisementController extends Controller
     /**
      * Update advertisement status.
      */
-    public function update(Advertisement $ad, Request $request): void
+    public function update(Advertisement $advertisement, Request $request): void
     {
         $data = $request->validate([
             'status' => 'required|bool',
         ]);
 
-        dispatch_now(new Update($ad, $data['status']));
+        dispatch_now(new Update($advertisement, $data['status']));
     }
 }
