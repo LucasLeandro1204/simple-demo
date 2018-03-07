@@ -21,6 +21,13 @@ class AdvertiserControllerTest extends TestCase
             'price' => 3000,
         ]);
 
+        // Status false
+        factory(Advertisement::class, 1)->create([
+            'advertiser_id' => $advertiser->id,
+            'price' => 3000,
+            'status' => false,
+        ]);
+
         // another without add
         factory(Advertiser::class)->create([
             'name' => 'Foo',
