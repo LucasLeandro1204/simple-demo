@@ -13,14 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::prefix('advertiser')->group(function () {
-    Route::get('/', 'AdvertiserController@index')->name('advertiser.index');
-    Route::post('/', 'AdvertiserController@store')->name('advertiser.store');
-    Route::put('/{advertiser}', 'AdvertiserController@update')->name('advertiser.update');
-    Route::delete('/{advertiser}', 'AdvertiserController@delete')->name('advertiser.destroy');
+Route::prefix('advertiser')->name('advertiser.')->group(function () {
+    Route::get('/', 'AdvertiserController@index')->name('index');
+    Route::post('/', 'AdvertiserController@store')->name('store');
+    Route::put('/{advertiser}', 'AdvertiserController@update')->name('update');
+    Route::delete('/{advertiser}', 'AdvertiserController@delete')->name('destroy');
 });
 
-Route::prefix('advertisement')->group(function () {
-    Route::post('/', 'AdvertisementController@store')->name('advertisement.store');
-    Route::put('/{advertisement}', 'AdvertisementController@update')->name('advertisement.update');
+Route::prefix('advertisement')->name('advertisement.')->group(function () {
+    Route::post('/', 'AdvertisementController@store')->name('store');
+    Route::put('/{advertisement}', 'AdvertisementController@update')->name('update');
 });
